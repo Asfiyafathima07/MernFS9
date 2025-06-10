@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mobile Number Validation</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background-color: white;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      text-align: center;
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      width: 250px;
+      font-size: 16px;
+      margin-left: 10px;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    #message {
+      margin-top: 15px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Mobile Number Validation using JavaScript</h2>
+  <label>Enter Mobile Number</label>
+  <input type="text" id="mobile" placeholder="Enter 10 Digit Mobile Num">
+  <br>
+  <button onclick="validateMobile()">Validate</button>
+  <div id="message"></div>
+</div>
+
+<script>
+  function validateMobile() {
+    let number = document.getElementById('mobile').value;
+    let message = document.getElementById('message');
+    let pattern = /^[6-9]\d{9}$/;
+
+    if (pattern.test(number)) {
+      message.style.color = 'green';
+      message.textContent = 'Valid Mobile Number';
+    } else {
+      message.style.color = 'red';
+      message.textContent = 'Invalid Mobile Number';
+    }
+  }
+</script>
+
+</body>
+</html>
