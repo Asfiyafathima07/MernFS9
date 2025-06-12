@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Prime Number Generator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #e6f0f2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      width: 400px;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    td {
+      padding: 10px;
+    }
+    input[type="text"], textarea {
+      width: 100%;
+      padding: 8px;
+      font-size: 14px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    textarea {
+      resize: none;
+      height: 100px;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h2>Prime Number Generator</h2>
+  <table border="1">
+    <tr>
+      <td>Start</td>
+      <td><input type="text" id="start"></td>
+    </tr>
+    <tr>
+      <td>End</td>
+      <td><input type="text" id="end"></td>
+    </tr>
+    <tr>
+      <td>Prime Number</td>
+      <td><textarea id="result" readonly></textarea></td>
+    </tr>
+    <tr>
+      <td colspan="2" style="text-align: center;">
+        <button onclick="generatePrimes()">Generate</button>
+      </td>
+    </tr>
+  </table>
+</div>
+<script>
+  function isPrime(n) {
+    if (n <= 1) return false;
+    for (let i = 2; i <= Math.sqrt(n); i++) {
+      if (n % i === 0) return false;
+    }
+    return true;
+  }
+  function generatePrimes() {
+    const start = parseInt(document.getElementById('start').value);
+    const end = parseInt(document.getElementById('end').value);
+    let primes = [];
+    for (let i = start; i <= end; i++) {
+      if (isPrime(i)) {
+        primes.push(i);
+      }
+    }
+    document.getElementById('result').value = primes.join(', ');
+  }
+</script>
+</body>
+</html>
